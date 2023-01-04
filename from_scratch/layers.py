@@ -1,14 +1,3 @@
-"""
-Build a neural network from scratch:
-1. Feed data into the network
-2. Data moves through the layers, until we reach the output (forward propagation)
-3. Calculate the error
-4. Backward propagation. We adjust given parameters of our network.
-    Usually it will be the derivative of our error in respect to the parameter
-5. Iterate through that process.
-
-The goal is to minimize the error through the iterations
-"""
 import numpy as np
 from scipy import signal
 
