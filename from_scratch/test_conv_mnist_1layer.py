@@ -31,12 +31,12 @@ cnn.add_layer(
     ConvolutionLayer((28, 28, 1), (3, 3), 1)
 )  # input (28,28,1) output (26,26,1)
 cnn.add_layer(ActivationLayer(tanh, tanh_prime))
-cnn.add_layer(
-    ConvolutionLayer((26, 26, 1), (3, 3), 1)
-)  # input (26,26,1) output (24,24,1)
-cnn.add_layer(ActivationLayer(tanh, tanh_sprime))
+# cnn.add_layer(
+#     ConvolutionLayer((26, 26, 1), (3, 3), 1)
+# )  # input (26,26,1) output (24,24,1)
+# cnn.add_layer(ActivationLayer(tanh, tanh_prime))
 cnn.add_layer(FlattenLayer())  # input (24,24,1) output (1,24*24*1)
-cnn.add_layer(FCLayer(24 * 24 * 1, 100))  # input (1, 24*24*1) output (1,100)
+cnn.add_layer(FCLayer(26 * 26 * 1, 100))  # input (1, 24*24*1) output (1,100)
 cnn.add_layer(ActivationLayer(tanh, tanh_prime))
 cnn.add_layer(FCLayer(100, 10))  # input (1,100) output (1,10)
 cnn.add_layer(ActivationLayer(softmax, softmax_prime))
