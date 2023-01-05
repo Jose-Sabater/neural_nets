@@ -4,29 +4,29 @@ This module contains activation functions to be used for forward and backward pr
 import numpy as np
 
 
-def tanh(x: np.ndarray[float]) -> np.ndarray[float]:
+def tanh(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     return np.tanh(x)
 
 
-def tanh_prime(x: np.ndarray[float]) -> np.ndarray[float]:
+def tanh_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     # print("tanh", (1 - np.tanh(x) ** 2).shape)
     return 1 - np.tanh(x) ** 2
 
 
-def relu(x: np.ndarray[float]) -> np.ndarray[float]:
+def relu(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     return np.maximum(0, x)
 
 
-def relu_prime(x: np.ndarray[float]) -> np.ndarray[float]:
+def relu_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     return (x > 0).astype(int)
 
 
-def softmax(x: np.ndarray[float]) -> np.ndarray[float]:
+def softmax(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     e = np.exp(x)
     return e / np.sum(e, axis=1)
 
 
-def softmax_prime(x: np.ndarray[float]) -> np.ndarray[float]:
+def softmax_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     """
     Returns the derivative of the softmax. Filters depending on if the input is vectorized or not
     """
