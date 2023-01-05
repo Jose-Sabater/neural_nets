@@ -8,6 +8,7 @@ from loss import mse, mse_prime
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
 
+np.random.seed(0)
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 x_train, x_test = np.array(x_train, np.float32), np.array(x_test, np.float32)

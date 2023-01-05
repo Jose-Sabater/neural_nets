@@ -1,6 +1,8 @@
 import numpy as np
 from scipy import signal
 
+np.random.seed(0)
+
 
 class relu:
     def __init__(self):

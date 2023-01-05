@@ -1,0 +1,9 @@
+#General Settings
+data_directory: ./data/
+epochs: 100
+learning_rate: 0.1
+loss_function: mse
+
+#Activation Functions
+network_activation: tanh
+output_activation: softmax
