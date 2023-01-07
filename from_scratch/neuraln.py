@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class Network:
@@ -33,7 +34,7 @@ class Network:
         samples = len(x_train)
 
         # training loop
-
+        self.err_dict = []
         for i in range(epochs):
             err = 0
             for j in range(samples):
@@ -52,4 +53,11 @@ class Network:
 
             # error on all samples
             err /= samples
+            self.err_dict.append(err)
             print(f"epoch{i+1} / {epochs}    error={err}")
+
+        plt.plot(self.err_dict)
+        plt.title("Cross Entropy Loss")
+        plt.ylabel("Loss")
+        plt.xlabel("Epoch")
+        plt.show()

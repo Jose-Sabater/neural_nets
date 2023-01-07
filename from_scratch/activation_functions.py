@@ -21,9 +21,14 @@ def relu_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
     return (x > 0).astype(int)
 
 
-def softmax(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
-    e = np.exp(x)
-    return e / np.sum(e, axis=1)
+# def softmax(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
+#     e = np.exp(x)
+#     return e / np.sum(e, axis=1)
+
+# sofmax activation
+def softmax(X):
+    exps = np.exp(X - np.max(X, axis=1).reshape(-1, 1))
+    return exps / np.sum(exps, axis=1)[:, None]
 
 
 def softmax_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
@@ -53,3 +58,9 @@ def softmax_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
                 else:
                     jacobian_m[i, j] = -s[i] * s[j]
         return jacobian_m
+
+
+# Softmax alternative
+# def softmax_prime(pred):
+#     s = softmax(pred)
+#     return s * (1 - (1 * s).sum(axis=1)[:, None])
