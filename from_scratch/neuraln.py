@@ -12,11 +12,11 @@ class Network:
         """Add a layer to your network"""
         self.layers.append(layer)
 
-    def set_loss(self, loss, loss_prime) -> None:
+    def set_loss(self, loss: callable, loss_prime: callable) -> None:
         self.loss = loss
         self.loss_prime = loss_prime
 
-    def predict(self, input_data) -> np.ndarray[float]:
+    def predict(self, input_data: np.ndarray) -> np.ndarray[float]:
         samples = len(input_data)
         result = []
 
@@ -30,7 +30,13 @@ class Network:
 
         return result
 
-    def fit(self, x_train, y_train, epochs, learning_rate):
+    def fit(
+        self,
+        x_train: np.ndarray,
+        y_train: np.ndarray,
+        epochs: int,
+        learning_rate: float,
+    ):
         samples = len(x_train)
 
         # training loop
@@ -57,7 +63,7 @@ class Network:
             print(f"epoch{i+1} / {epochs}    error={err}")
 
         plt.plot(self.err_dict)
-        plt.title("Cross Entropy Loss")
+        plt.title("Loss")
         plt.ylabel("Loss")
         plt.xlabel("Epoch")
         plt.show()
