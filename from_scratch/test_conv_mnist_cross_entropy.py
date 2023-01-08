@@ -40,10 +40,35 @@ cnn.add_layer(FCLayer(100, 10))  # input (1,100) output (1,10)
 cnn.add_layer(ActivationLayer(*settings.output_activation))
 
 cnn.set_loss(cross_entropy_loss, cross_entropy_prime)
-cnn.fit(x_train[0:2000], y_train[0:2000], settings.epochs, 0.01)
+cnn.fit(x_train[0:5000], y_train[0:5000], settings.epochs, 0.01)
 
-# test some samples
-out = cnn.predict(x_test[0:3])
-print("Result: ")
-print(out)
-print("true values: ", y_test[0:3])
+# # test some samples
+# out = cnn.predict(x_test[0:3])
+# print("Result: ")
+# print(out)
+# print("true values: ", y_test[0:3])
+
+predictions = cnn.predict(x_test)
+
+# Calculate the accuracy of the predictions
+accuracy = np.mean(np.argmax(predictions, axis=1) == np.argmax(y_test, axis=1))
+
+# Print the accuracy
+print(f"Test accuracy: {accuracy:.2f}")
+
+# Plot the first 25 test images with their predicted and true labels
+plt.figure(figsize=(10, 10))
+for i in range(25):
+    plt.subplot(5, 5, i + 1)
+    plt.xticks([])
+    plt.yticks([])
+    plt.grid(False)
+    plt.imshow(x_test[i][:, :, 0], cmap=plt.cm.binary)
+    predicted_label = np.argmax(predictions[i])
+    true_label = np.argmax(y_test[i])
+    if predicted_label == true_label:
+        color = "blue"
+    else:
+        color = "red"
+    plt.xlabel(f"Predicted: {predicted_label}\nTrue: {true_label}", color=color)
+plt.show()
