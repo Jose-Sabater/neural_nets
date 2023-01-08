@@ -3,8 +3,8 @@
 ## From Scratch
 Here I build neural networks to understand the basic statistical principles behind them.
 
-![Plot](./assets/loss_from_scratch.png)
-
+![Plot](./assets/loss_from_scratch.png)  
+![Plot](./assets/predictions_scratch.PNG)
 
 
 ## References
