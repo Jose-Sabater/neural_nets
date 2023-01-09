@@ -5,3 +5,5 @@ venv
 docu.txt
 */other
 */data
+MNIST
+pytorch_simple/results
