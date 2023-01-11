@@ -3,7 +3,5 @@ to_do.txt
 __pycache__
 venv
 docu.txt
-*/other
-*/data
+/data
 MNIST
-pytorch_simple/results
