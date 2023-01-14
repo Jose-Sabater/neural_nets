@@ -4,34 +4,71 @@ This module contains activation functions to be used for forward and backward pr
 import numpy as np
 
 
-def tanh(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
+def tanh(x: np.array) -> np.array:
+    """
+    Applies the hyperbolic tangent function element-wise to the input array.
+    Args:
+        x (np.array): The input array.
+    Returns:
+        np.array: The output array with the hyperbolic tangent applied element-wise.
+    """
     return np.tanh(x)
 
 
-def tanh_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
-    # print("tanh", (1 - np.tanh(x) ** 2).shape)
+def tanh_prime(x: np.array) -> np.array:
+    """
+    Calculates the derivative of the hyperbolic tangent function element-wise for the input array.
+    Args:
+        x (np.array): The input array.
+    Returns:
+        np.array: The output array with the derivative of the hyperbolic tangent applied element-wise.
+    """
     return 1 - np.tanh(x) ** 2
 
 
-def relu(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
+def relu(x: np.array) -> np.array:
+    """
+    Applies the rectified linear unit (ReLU) function element-wise to the input array.
+    Args:
+        x (np.array): The input array.
+    Returns:
+        np.array: The output array with the ReLU applied element-wise.
+    """
     return np.maximum(0, x)
 
 
-def relu_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
+def relu_prime(x: np.array) -> np.array:
+    """
+    Calculates the derivative of the rectified linear unit (ReLU) function element-wise for the input array.
+    Args:
+        x (np.array): The input array.
+    Returns:
+        np.array: The output array with the derivative of the ReLU applied element-wise.
+    """
     return (x > 0).astype(int)
 
 
-# def softmax(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
-#     e = np.exp(x)
-#     return e / np.sum(e, axis=1)
+def softmax(X: np.array) -> np.array:
+    """
+    Applies the softmax function to the input array.
+    Args:
+        X (np.array): The input array.
+    Returns:
+        np.array: The output array with the softmax applied.
+    """
+    # Get the shape of the input array
+    shape = X.shape
+    # Check the shape of the array
+    if len(shape) == 2:
+        axis = 1
+    else:
+        axis = -1
 
-# sofmax activation
-def softmax(X):
-    exps = np.exp(X - np.max(X, axis=1).reshape(-1, 1))
-    return exps / np.sum(exps, axis=1)[:, None]
+    exps = np.exp(X - np.max(X, axis=axis))
+    return exps / np.sum(exps, axis=axis)
 
 
-def softmax_prime(x: np.ndarray[int, float]) -> np.ndarray[int, float]:
+def softmax_prime(x: np.array) -> np.array:
     """
     Returns the derivative of the softmax. Filters depending on if the input is vectorized or not
     """
