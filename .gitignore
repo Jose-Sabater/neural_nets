@@ -5,3 +5,4 @@ venv
 docu.txt
 /data
 MNIST
+pytorch_object_detection\results
