@@ -12,6 +12,11 @@ I build simple networks using pytorch
 ![Plot](./assets/loss_pytorch.png)  
 ![Plot](./assets/predictions_pytorch.png)
 
+## Time Dataset Classification  
+I use this dataset from [Kaggle](https://www.kaggle.com/datasets/gpiosenka/time-image-datasetclassification) to create a classification model with more than 99.8% accuracy on the test set.  
+![Plot](./assets/loss_time.png)  
+![Plot](./assets/results_time.png)
+  
 ## References
 Neural Network from Scratch  
 [towardsdatascience](https://towardsdatascience.com/math-neural-network-from-scratch-in-python-d6da9f29ce65)  
