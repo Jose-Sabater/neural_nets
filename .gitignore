@@ -11,4 +11,7 @@ MNIST
 /data
 to_do.txt
 
+# Wheat
+wheat_dataset/fasterrcnn_resnet50_fpn.pth
+wheat_dataset/example.log
 venv
